@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Chỉnh sửa đơn hàng</h1>
+  <form [formGroup]="oderForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Ngày giao hàng</mat-label>
+      <input
+        matInput
+        type="datetime-local"
+        placeholder="Ngày giao hàng"
+        formControlName="deliveryDate"
+        require
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Địa chỉ nhận hàng</mat-label>
+      <input
+        matInput
+        placeholder="Địa chỉ nhận hàng"
+        formControlName="deliveryAddress"
+        require
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Số điện thoại người nhận</mat-label>
+      <input
+        matInput
+        placeholder="Số điện thoại người nhận"
+        formControlName="phoneNumber"
+        require
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Trạng thái</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let item of status" [value]="item.value">
+          {{ item.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+
+    <button type="submit" class="btn btn-success" (click)="saveandGotoList()">
+       Cập nhập đơn hàng
+    </button>
+    &nbsp;
+    <button type="submit" class="btn btn-success" (click)="back()">
+      Quay lại
+    </button>
+  </form>
+</div>

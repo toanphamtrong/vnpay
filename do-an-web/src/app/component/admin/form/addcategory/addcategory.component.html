@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 *ngIf="id == 0"> Thêm mới thể loại </h1>
+  <h1 *ngIf="id != 0"> Cập nhập thể loại ID: {{id}} </h1>
+  <form [formGroup]="cateForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Mã code</mat-label>
+      <input matInput placeholder="Nhập mã code" formControlName="code" require />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Tên thể loại</mat-label>
+      <input matInput placeholder="Nhập tên thể loại" formControlName="name" require />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br/>
+    <button
+      type="submit"
+      class="btn btn-success"
+      (click)="saveandGotoList()"
+    >
+    <span *ngIf="id == 0">Thêm mới & trở về danh sách </span>
+    <span *ngIf="id != 0"> Cập nhập & trở về danh sách </span>
+    </button>
+    &nbsp;
+    <button
+      type="submit"
+      class="btn btn-success"
+      (click)="back()"
+    >
+     Quay lại
+    </button>
+  </form>
+</div>

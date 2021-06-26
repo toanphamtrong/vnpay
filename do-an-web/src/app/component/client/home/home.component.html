@@ -1,0 +1,226 @@
+<!-- Main Slider Start -->
+<div class="header">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-3">
+              <nav class="navbar bg-light">
+                <h2 class="title" style="margin-left: 50px;margin-top: 20px;">Danh Mục Sản Phẩm</h2>
+                  <ul class="navbar-nav" *ngFor="let cate of category">
+                      <li class="nav-item">
+                           <a class="nav-link" href="" [routerLink]="['/products/category/'+cate.id]" routerLinkActive="router-link-active"  ><i></i> {{cate.name}}</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+          <div class="col-md-6">
+              <div class="header-slider normal-slider">
+                  <div class="header-slider-item">
+                      <img src="assets/style/img/bg3.jpg" alt="Slider Image" style="height: 410px;width: 625px;"/>
+                      <div class="header-slider-caption">
+                          <p>Phong Cách - Uy Tín &nbsp; Chất Lượng - Thương Hiệu</p>
+                          <a class="btn" href="products"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="header-img">
+                  <div class="img-item">
+                      <img src="assets/style/img/bg1.jpg" />
+                      <a class="img-text" href="products">
+                        <p>Phong Cách - Uy Tín &nbsp; Chất Lượng - Thương Hiệu</p>
+                      </a>
+                  </div>
+                  <div class="img-item">
+                      <img src="assets/style/img/bg2.jpg" />
+                      <a class="img-text" href="products">
+                        <p>Phong Cách - Uy Tín &nbsp; Chất Lượng - Thương Hiệu</p>
+                        </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Main Slider End -->
+
+<!-- Thanh Toan- Giao Hang - Quyen Loi-->
+<div class="feature">
+  <div class="container-fluid">
+      <div class="row align-items-center">
+          <div class="col-lg-3 col-md-6 feature-col">
+              <div class="feature-content">
+                  <i class="fab fa-cc-mastercard"></i>
+                  <h2>Thanh Toán</h2>
+                  <p>
+                      Bảo mật, nhanh chóng.
+                      Thông tin khách hàng là trên hết
+                  </p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 feature-col">
+              <div class="feature-content">
+                  <i class="fa fa-truck"></i>
+                  <h2>Giao Hàng</h2>
+                  <p>
+                      Giao hàng tận nơi, kiểm tra hàng trước khi thanh toán
+                  </p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 feature-col">
+              <div class="feature-content">
+                  <i class="fa fa-sync-alt"></i>
+                  <h2>Quyền lợi</h2>
+                  <p>
+                      Hoàn trả miễn phí, Quyền lợi của khách hàng đặt lên hàng đầu
+                  </p>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 feature-col">
+              <div class="feature-content">
+                  <i class="fa fa-comments"></i>
+                  <h2>24/7 Hỗ Trợ</h2>
+                  <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Hỗ trợ trực tuyến 24/24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hotline :0968758298
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--END Thanh Toan- Giao Hang - Quyen Loi-->
+
+<!-- Category Start-->
+  <div class="category">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-3">
+              <div class="category-item ch-400">
+                  <img src="assets/style/img/1.png" />
+                  <a class="category-name"
+                   href="" [routerLink]="['/products/category/28']" routerLinkActive="router-link-active">
+                      <p>LapTop</p>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="category-item ch-250">
+                  <img src="assets/style/img/p6.jpg" />
+                  <a class="category-name"
+                  href="" [routerLink]="['/products/category/30']" routerLinkActive="router-link-active">
+                      <p>Tai nghe</p>
+                  </a>
+              </div>
+              <div class="category-item ch-150">
+                  <img src="assets/style/img/category-5.jpg" />
+                  <a class="category-name" href=""[routerLink]="['/products/category/33']" routerLinkActive="router-link-active">
+                      <p>Phụ kiện</p>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="category-item ch-150">
+                  <img src="assets/style/img/12prm.jpg" />
+                  <a class="category-name" href=""
+                  [routerLink]="['/products/category/29']" routerLinkActive="router-link-active">
+                  >
+                      <p>Điện thoại</p>
+                  </a>
+              </div>
+              <div class="category-item ch-250">
+                  <img src="assets/style/img/bg2.jpg" />
+                  <a class="category-name" href=""[routerLink]="['/products/category/33']" routerLinkActive="router-link-active">
+                      <p>Linh kiện</p>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="category-item ch-400">
+                  <img src="assets/style/img/p28.jpg" />
+                  <a class="category-name"
+                   href="" [routerLink]="['/products/category/32']" routerLinkActive="router-link-active">
+                      <p>Loa</p>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Category End-->
+<!-- Sản Phẩm hot -->
+<div class="featured-product product">
+  <div class="container-fluid">
+      <div class="section-header">
+          <h1>Sản Phẩm Mới Về</h1>
+      </div>
+      <div class="row align-items-center product-slider ">
+          <div class="col-lg-3" *ngFor="let proNew of productNew | paginate: { itemsPerPage:8 , currentPage: p }">
+              <div class="product-item">
+                  <div class="product-title">
+                      <a href="#">{{proNew.name}}</a>
+                      <div class="ratting">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                      </div>
+                  </div>
+                  <div class="product-image">
+                    <a href=""[routerLink]="['/products/detail/'+proNew.id]">
+                      <img src="{{proNew.image}}" alt="Product Image">
+                     </a>
+                  </div>
+                  <div class="product-price" style="background: rgb(231, 185, 185);">
+                    <span style="color: black;"><span>$</span>{{proNew.priceSell}}</span>
+                    <button class="btn" (click)="addCart(productNew)"><i class="fa fa-shopping-cart"></i>AddToCart</button>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-12" style="padding-top: 20px">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Featured Product End -->
+
+<!-- sản phẩm mới về -->
+<div class="recent-product product">
+  <div class="container-fluid">
+      <div class="section-header">
+          <h1>
+            Sản Phẩm Giảm Giá
+          </h1>
+      </div>
+      <div class="row align-items-center product-slider product-slider-4">
+          <div class="col-lg-3" *ngFor="let proSale of productSale| paginate: { itemsPerPage: 4, currentPage: p2 }">
+              <div class="product-item">
+                  <div class="product-title">
+                      <a href="#">{{proSale.name}}</a>
+                      <div class="ratting">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                      </div>
+                  </div>
+                  <div class="product-image">
+                    <a href=""[routerLink]="['/products/detail/'+proSale.id]">
+                      <img src="{{proSale.image}}" alt="Product Image">
+                     </a>
+                  </div>
+                  <div class="product-price" style="background: rgb(231, 185, 185);">
+                    <span style="color: black;"><span>$</span>{{proSale.priceSell}}</span>
+                    <button class="btn" (click)="addCart(productSale)"><i class="fa fa-shopping-cart"></i>AddToCart</button>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-12" style="padding-top: 20px">
+            <pagination-controls (pageChange)="p2 = $event"></pagination-controls>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Recent Product End -->

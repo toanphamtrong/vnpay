@@ -1,0 +1,65 @@
+<div class="product-detail-top">
+  <div class="row align-items-center">
+        <div class="col-md-7" id="thumbnail" >
+          <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'">
+            <mdb-carousel-item>
+              <img src="{{productId.image}}" alt="Product Image" class="d-block w-100">
+            </mdb-carousel-item>
+          </mdb-carousel>
+        </div>
+        <div class="col-md-5">
+            <div class="product-content">
+                <div class="title"><h2>{{productId.name}}</h2></div>
+                <div class="ratting">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="price">
+                    <h4>Price:</h4>
+                    <p>$ {{productId.priceSell}} <span>${{productId.sale}}</span></p>
+                </div>
+                <div class="quantity">
+                    <h4>Số Lượng</h4>
+                    <div class="qty">
+
+                        <button class="btn-minus" (click)="changeQuantity(-1)"><i class="fa fa-minus"></i></button>
+                        <input type="text" [value]="quantity">
+                        <button class="btn-plus"  (click)="changeQuantity(1)"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="p-color" *ngIf="productId.coloList && productId.coloList.length > 0">
+                    <h4>Color:</h4>
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn" *ngFor="let color of productId.coloList"
+                          (click)="chooseColor(color.productInfoId)">{{color.code}}
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="!productId.coloList || productId.coloList.length == 0">
+                  <h1 style="color: red;"> HẾT HÀNG!!! </h1>
+                </div>
+                <div class="action">
+                    <button class="btn" (click)="addCart()" *ngIf="isChooseColor"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="row product-detail-bottom">
+    <div class="col-lg-12">
+
+
+      <div class="tab-content">
+        <div id="description" class="container tab-pane active">
+          <h4>{{productId.name}}</h4>
+          <p>
+            {{productId.mieuTa}}
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

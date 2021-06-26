@@ -1,0 +1,64 @@
+<!-- Cart Start -->
+<div class="cart-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cart-page-inner">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <tr >
+                <th>Mã Đơn Hàng</th>
+                <th>Thanh toán</th>
+                <th>Địa chỉ giao hàng</th>
+                <th>Số điện thoại</th>
+                <th>Trạng thái</th>
+                <th>Số Lượng </th>
+                <th>Tổng Tiền</th>
+              </tr>
+              <tr *ngFor="let oder of dataOder">
+                <td><a href="#" data-toggle="modal" data-target="#myModal" (click)="getDetailByCode(oder.code)">{{oder.code}} </a></td>
+                  <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" >
+                        <h4 class="modal-title">Chi Tiết Đơn Hàng &nbsp;{{oder.code}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        <table style="width:100%">
+                          <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá tiền</th>
+                            <th>số lượng</th>
+                            <th>Màu sản phẩm</th>
+                            <th>Tổng tiền</th>
+                          </tr>
+                          <tr *ngFor="let item of dataDetail">
+                            <td>{{item.productInfoProductName}}</td>
+                            <td>{{item.productInfoProductPriceSell}}</td>
+                            <td>{{item.numberProduct}}</td>
+                            <td>{{item.productInfoColorName}}</td>
+                            <td>{{item.numberProduct *item.productInfoProductPriceSell}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <td><button *ngIf = "oder.status!=5"type="button" class="btn btn-primary" (click)="getOrderUrl(oder)">Thanh toán</button></td>
+                <td>{{oder.deliveryAddress}}</td>
+                <td>{{oder.phoneNumber}}</td>
+                <td>{{oder.statusString}}</td>
+                <td>{{oder.numberProduct}}</td>
+                <td>{{oder.totalResult}}</td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Cart End -->

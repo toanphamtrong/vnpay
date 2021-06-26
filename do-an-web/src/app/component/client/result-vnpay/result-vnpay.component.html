@@ -1,0 +1,46 @@
+<div class="container body-result">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-8 col-sm-8">
+            <div class="result-info">
+                <table class="styled-table">
+                    <thead *ngIf="paymentSuccess">
+                        <tr>
+                            <th colspan="2">Quý khách đã thanh toán thành công số tiền <br/>
+                                {{Amount/100 | currency:'JPY':''}} VND
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead *ngIf="!paymentSuccess">
+                        <tr class="error-thead">
+                            <th colspan="2">Giao dịch không thành công <br/>
+                                <h4> {{errorMessage}}</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="paymentSuccess">
+                        <tr class="active-row">
+                            <td>Mã Giao Dịch</td>
+                            <td>{{TransactionNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nội dung</td>
+                            <td>{{OrderInfo}}</td>
+                        </tr>
+                        <tr class="active-row">
+                            <td>Số tiền</td>
+                            <td>{{Amount/100 | currency:'JPY':''}} VND</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày giao dịch</td>
+                            <td>{{PayDate}}</td>
+                        </tr>
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="action-button">
+                <button type="button" [routerLink]="['/cart']" routerLinkActive="router-link-active" class="btn btn-danger back">Back to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

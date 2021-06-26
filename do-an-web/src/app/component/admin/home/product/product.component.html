@@ -1,0 +1,113 @@
+<div class="row" style="margin-bottom: 300px">
+  <div class="col-12 col-md-12">
+    <h1>Quản lý sản phẩm</h1>
+  </div>
+  <div class="col-6 col-md-6">
+    <button
+      style="margin-left: 14px; height: 50px; margin-bottom: 20px; width: 250px"
+      (click)="addProduct()"
+    >
+      Thêm sản phẩm
+    </button>
+  </div>
+  <div class="col-6 col-md-6">
+    <div class="search">
+      <input
+        style="height: 40px; width: 250px"
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="seachFrom.seach"
+      />
+      <button
+        class="fa fa-search"
+        style="height: 40px; width: 40px"
+        (click)="timkiem()"
+      ></button>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12">
+    <table id="customers" style="border-collapse: collapse">
+      <tr>
+        <th>EDIT</th>
+        <th>Id</th>
+        <th>
+          <mat-icon style="cursor: pointer" (click)="sortByCode('down')">
+            arrow_downward
+          </mat-icon>
+          <mat-icon style="cursor: pointer" (click)="sortByCode('up')">
+            arrow_upward
+          </mat-icon>
+          Tên sản phẩm
+        </th>
+        <th>Mã code</th>
+        <th>Giá sản phẩm</th>
+        <th>Thể loại</th>
+        <th>Hãng sản xuất</th>
+        <th>Ảnh sản phẩm</th>
+      </tr>
+      <tr
+        *ngFor="
+          let prod of sharedDataService.productList
+            | paginate: { itemsPerPage: 12, currentPage: p }
+        "
+      >
+        <td>
+          <mat-icon
+            style="cursor: pointer"
+            title="Nhấn vào để soạn"
+            (click)="deleteProduct(prod.id)"
+          >
+            clear
+          </mat-icon>
+          &nbsp;
+          <mat-icon
+            style="cursor: pointer"
+            title="Nhấn vào để soạn"
+            (click)="editProduct(prod.id)"
+          >
+            create
+          </mat-icon>
+        </td>
+        <td>{{ prod.id }}</td>
+        <td><a href="#" data-toggle="modal" data-target="#myModal" (click)="getDetailByCode(prod.id)">{{prod.name}} </a></td>
+        <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header" >
+                <h4 class="modal-title">Chi tiết sản phẩm &nbsp;{{dataDetail.name}}</h4>
+              </div>
+              <div class="modal-body">
+                <table style="width:100%">
+                  <tr>
+                    <th>số lượng</th>
+                    <th>Màu sản phẩm</th>
+                  </tr>
+                  <tr *ngFor="let item of dataDetail.productInfoList">
+                    <td>{{item.numberProduct}}</td>
+                    <td>{{item.colorName}}</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <td>{{ prod.code }}</td>
+        <td>{{ prod.priceSell }}</td>
+        <td>{{ prod.productTypeName }}</td>
+        <td>{{ prod.brandName }}</td>
+        <td>
+          <div class="img">
+            <img style="height: 40px;" src="{{ prod.image }}" alt="Image" />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-12" style="padding-top: 20px">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

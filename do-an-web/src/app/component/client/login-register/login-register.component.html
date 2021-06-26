@@ -1,0 +1,100 @@
+<!-- Login Start -->
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="register-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Tài Khoản</label>
+                            <input class="form-control" type="text" placeholder="Username" [(ngModel)]="dangKyForm.username"
+                              required name="username" #username="ngModel"/>
+                            <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                              <div *ngIf="username.errors?.required">
+                                <span style="color: red;">Username is required</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Họ Tên</label>
+                            <input class="form-control" type="text" placeholder="Last Name" [(ngModel)]="dangKyForm.name"
+                            required name="name" #name="ngModel"/>
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                              <div *ngIf="name.errors?.required">
+                                <span style="color: red;">Lastname is required</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>E-mail</label>
+                            <input class="form-control" type="email" placeholder="E-mail" [(ngModel)]="dangKyForm.email"
+                              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" #email="ngModel"/>
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                              <div *ngIf="email.errors?.pattern">
+                                <span style="color: red;">Email invalid</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Điện Thoại</label>
+                            <input class="form-control" type="text" placeholder="Mobile No" [(ngModel)]="dangKyForm.phoneNumber"
+                            required name="phone" #phone="ngModel"/>
+                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                              <div *ngIf="phone.errors?.required">
+                                <span style="color: red;">Phone is required</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Mật Khẩu</label>
+                            <input class="form-control" type="password" placeholder="Password" [(ngModel)]="dangKyForm.password"
+                            required name="password" #password="ngModel"/>
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                              <div *ngIf="password.errors?.required">
+                                <span style="color: red;">Password is required</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Nhập Lại Mật Khẩu</label>
+                            <input class="form-control" type="password" placeholder="Repassword" [(ngModel)]="dangKyForm.repassword"
+                            required name="repassword" #repassword="ngModel" pattern="{{dangKyForm.password}}"/>
+                            <div *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)">
+                              <div *ngIf="repassword.errors?.required">
+                                <span style="color: red;">Repassword is required</span>
+                              </div>
+                              <div *ngIf="repassword.errors?.pattern">
+                                <span style="color: red;">Mật khẩu không trùng khớp</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn" (click)="dangky()"
+                              [disabled]="!username.valid && !email.valid && !name.valid && !phone.valid && !password.valid && !repassword.valid">
+                            Đăng Ký
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Username</label>
+                            <input class="form-control" type="text" placeholder="Username" [(ngModel)]="loginForm.username">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password</label>
+                            <input class="form-control" type="password" placeholder="Password" [(ngModel)]="loginForm.password">
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn" (click)="login()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login End -->

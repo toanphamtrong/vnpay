@@ -1,0 +1,45 @@
+
+<div style="margin-bottom: 300px">
+  <h1 class="mt-4">Quản lý thể loại sản phẩm</h1>
+      <button style="margin-left: 14px;height: 50px;margin-bottom:20px ;" (click)="addCate()">Thêm thể loại sản phẩm</button>
+  <table id="customers" style="border-collapse: collapse">
+    <tr>
+      <th>EDIT</th>
+      <th>
+        Id
+      </th>
+      <th>Code</th>
+      <th>Name
+        <mat-icon style="cursor: pointer" (click)="sortByCode('down')" >
+          arrow_downward
+        </mat-icon>
+        <mat-icon style="cursor: pointer" (click)="sortByCode('up')" >
+          arrow_upward
+        </mat-icon>
+      </th>
+    </tr>
+    <tr *ngFor="let item of categorys">
+      <td>
+        <mat-icon
+          style="cursor: pointer;"
+          title="Nhấn vào để soạn"
+          (click)="deleteCategory(item.id)"
+        >
+          clear
+        </mat-icon>
+        &nbsp;
+        <mat-icon
+          style="cursor: pointer"
+          title="Nhấn vào để soạn"
+          (click)="editCategory(item.id)"
+        >
+          create
+        </mat-icon>
+      </td>
+      <td>{{ item?.id }}</td>
+      <td>{{ item?.code }}</td>
+      <td>{{ item?.name }}</td>
+    </tr>
+  </table>
+
+</div>

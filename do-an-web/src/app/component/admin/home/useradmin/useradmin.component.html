@@ -1,0 +1,81 @@
+<div class="row" style="margin-bottom: 300px">
+  <div class="col-12 col-md-12">
+    <h1>Quản lý User</h1>
+  </div>
+  <div class="col-6 col-md-6">
+    <button
+      style="margin-left: 14px; height: 50px; margin-bottom: 20px; width: 250px"
+      (click)="addUser()"
+    >
+      Thêm User
+    </button>
+  </div>
+  <div class="col-6 col-md-6">
+    <div class="search">
+      <input
+        style="height: 40px; width: 250px"
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="seachFrom.seach"
+      />
+      <button
+        class="fa fa-search"
+        style="height: 40px; width: 40px"
+        (click)="timkiem()"
+      ></button>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12">
+    <table id="customers" style="border-collapse: collapse">
+      <tr>
+        <th>EDIT</th>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>code(quyền)</th>
+        <th>Ngày sinh</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Địa chỉ</th>
+        <th>Chức vụ(isAdmin)</th>
+        <th>ten dang nhap</th>
+      </tr>
+      <tr
+        *ngFor="
+          let user of sharedDataService.productList
+            | paginate: { itemsPerPage: 12, currentPage: p }
+        "
+      >
+        <td>
+          <mat-icon
+            style="cursor: pointer"
+            title="Nhấn vào để soạn"
+            (click)="deleteUser(user.id)"
+          >
+            clear
+          </mat-icon>
+          &nbsp;
+          <mat-icon
+            style="cursor: pointer"
+            title="Nhấn vào để soạn"
+            (click)="editUser(user.id)"
+          >
+            create
+          </mat-icon>
+        </td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.codeString }}</td>
+        <td>{{ user.dob | date:'yyyy-MM-dd' }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.isAdminAccount }}</td>
+        <td>{{user.username}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-12" style="padding-top: 20px">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

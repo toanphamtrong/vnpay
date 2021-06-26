@@ -1,0 +1,156 @@
+<!-- Top bar Start -->
+<div class="top-bar">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <i class="fa fa-envelope"></i>
+        dothat998@gmail.com
+      </div>
+      <div class="col-sm-6">
+        <i class="fa fa-phone-alt"></i>
+        +84.968.758.298
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Top bar End -->
+
+<!-- Nav Bar Start -->
+<div class="nav">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <a href="#" class="navbar-brand">MENU</a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-between"
+        id="navbarCollapse"
+      >
+        <div class="navbar-nav mr-auto">
+          <a
+            href="#"
+            class="nav-item nav-link active"
+            routerLink="home"
+            routerLinkActive="active"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="nav-item nav-link"
+            routerLink="products"
+            routerLinkActive="active"
+            >Products</a
+          >
+          <a
+            href="#"
+            class="nav-item nav-link"
+            routerLink="cart"
+            routerLinkActive="active"
+            >Cart</a
+          >
+          <a
+            href="#"
+            class="nav-item nav-link"
+            routerLink="checkout"
+            routerLinkActive="active"
+            >Checkout</a
+          >
+          <a
+            href="#"
+            class="nav-item nav-link"
+            routerLink="admin"
+            routerLinkActive="active"
+            *ngIf="isAdmin == 'true'"
+            >Dashboard</a
+          >
+          <a
+          href="#"
+          class="nav-item nav-link"
+          routerLink="about"
+          routerLinkActive="active"
+          >About</a
+        >
+        </div>
+     <div class="navbar-nav ml-auto">
+          <div class="nav-item dropdown" *ngIf="!isLogin">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+              >TÀI KHOẢN</a
+            >
+            <div class="dropdown-menu">
+              <a
+                href="#"
+                class="dropdown-item"
+                routerLink="login-register"
+                routerLinkActive="active"
+                >Đăng nhập</a
+              >
+              <a
+                href="#"
+                class="dropdown-item"
+                routerLink="login-register"
+                routerLinkActive="active"
+                >Đăng ký</a
+              >
+            </div>
+          </div>
+          <div class="nav-item dropdown" *ngIf="isLogin">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              Hello{{name}}
+            </a>
+            <div  class="dropdown-menu">
+              <a href="#" class="dropdown-item">Thông tin tài khoản</a>
+              <a href="order" class="dropdown-item">Đơn hàng</a>
+              <a href="#" class="dropdown-item" (click)="logout()">Đăng xuất</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Nav Bar End -->
+
+<!-- Bottom Bar Start -->
+<div class="bottom-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-3">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/style/img/logo.png" alt="Logo" />
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="search">
+          <input
+            type="text"
+            placeholder="Search"
+            [(ngModel)]="seachFrom.seach"
+          />
+          <button class="fa fa-search" (click)="timkiem()"></button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="user">
+          <a
+            href="#"
+            class="btn cart"
+            routerLink="cart"
+            routerLinkActive="active"
+          >
+            <i class="fa fa-shopping-cart"></i>
+            <span class="test">{{ sharedDataService.cart.totalNumber}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bottom Bar End -->

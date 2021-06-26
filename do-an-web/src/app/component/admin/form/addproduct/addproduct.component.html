@@ -1,0 +1,100 @@
+<div class="container">
+  <h1 *ngIf="id === 0">Thêm mới sản phẩm</h1>
+  <h1 *ngIf="id !== 0">Cập nhập sản phẩm</h1>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Tên sản phẩm</mat-label>
+      <input
+        matInput
+        placeholder="Tên sản phẩm"
+        formControlName="name"
+        require
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Mã code</mat-label>
+      <input matInput placeholder="Mã code" formControlName="code" require />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Giá bán</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Giá bán"
+        formControlName="priceSell"
+        require
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="outline">
+      <mat-select [(ngModel)]="selectCategory" name="category">
+        <mat-option *ngFor="let item of categorys" [value]="item.id">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="outline">
+      <mat-select [(ngModel)]="selectBrand" name="category">
+        <mat-option *ngFor="let item of brands" [value]="item.id">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <!-- <mat-form-field appearance="outline">
+          <mat-label>File ảnh</mat-label>
+          <input
+            matInput
+            placeholder="Mã code"
+            formControlName="image"
+            require
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field> -->
+        <div class="upload">
+          <span>Anhr</span>
+          <input type="file"
+                          class="form-control"
+                          [(ngModel)]="addProductForm.fileImg"
+                          (change)="fileChangeEvent($event)"
+                           >
+          <img
+            width="100%"
+            height="100%"
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            class="image"
+          />
+      </div>
+
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Mã màu</mat-label>
+      <input matInput placeholder="Mã code" formControlName="mau" require />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>số lượng</mat-label>
+      <input matInput placeholder="Mã code" formControlName="soluong" require />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br />
+    <button type="submit" class="btn btn-success" (click)="saveandGotoList()">
+      <span *ngIf="id === 0"> ADD AND GO TO LIST </span>
+      <span *ngIf="id !== 0"> UPDATE AND GO TO LIST </span>
+    </button>
+    &nbsp;
+    <button type="submit" class="btn btn-success" (click)="back()">
+      Cancel
+    </button>
+  </form>
+</div>

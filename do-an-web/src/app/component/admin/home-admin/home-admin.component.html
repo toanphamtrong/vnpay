@@ -1,0 +1,241 @@
+<style>
+  table,
+  th,
+  tr,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  tr,
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+</style>
+
+<!-- ------- -->
+
+<div class="row"></div>
+<div class="container" style="background: #f3f3f3 !important">
+  <div class="row">
+    <div class="col-sm-8">
+      <main>
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Dashboard</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="admin">Dashboard</a></li>
+          </ol>
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="search">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  [(ngModel)]="seachFrom.seach"
+                />
+                <!-- [(ngModel)]="seachFrom.seach" (click)="timkiem()"-->
+                <button class="fa fa-search" (click)="timkiem()"></button>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <table id="datatablesSimple">
+                <thead>
+                  <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã code</th>
+                    <th>Giá sản phẩm</th>
+                    <th>Thể loại</th>
+                    <th>Hãng sản xuất</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Edit</th>
+                    <th>Xóa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let prod of sharedDataService.productList
+                        | paginate: { itemsPerPage: 12, currentPage: p }
+                    "
+                  >
+                    <td>{{ prod.name }}</td>
+                    <td>{{ prod.code }}</td>
+                    <td>{{ prod.priceSell }}</td>
+                    <td>{{ prod.productTypeName }}</td>
+                    <td>{{ prod.brandName }}</td>
+                    <td>
+                      <div class="img">
+                        <a href="#"
+                          ><img src="{{ prod.image }}" alt="Image"
+                        /></a>
+                      </div>
+                    </td>
+                    <td>
+                      <a  href="admin/a-edit/{{prod.id}}"
+                        ><button>Edit</button></a
+                      >
+
+                    </td>
+                    <td><button (click)="delete(prod.id)">Xóa</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="col-md-12" style="padding-top: 20px">
+                <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="col-sm-4">
+      <h1 style="color: crimson;">Thêm Sản Phẩm</h1>
+      <div class="addproductnew">
+        <div class="container-fluid">
+          <div class="row">
+            <div>
+              <div class="product-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Tên sản phẩm</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="tên sản phẩm"
+                      [(ngModel)]="addProductForm.name"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Code</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="mã sản phẩm"
+                      [(ngModel)]="addProductForm.code"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Giá sản phẩm</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="giá sản phẩm"
+                      [(ngModel)]="addProductForm.priceSell"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Giá gốc</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="Nhập giá gốc"
+                      [(ngModel)]="addProductForm.sale"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Tình trạng</label>
+                    <select
+                      style="
+                        width: 210px;
+                        height: 38px;
+                        margin-bottom: 15px;
+                        margin-left: 20px;
+                      "
+                    >
+                      <option value="new">new</option>
+                      <option value="sale">sale</option>
+                      <option value="null">thường</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12">
+                    <label>Miêu tả</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="miêu tả"
+                      [(ngModel)]="addProductForm.mieuTa"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="file" >Choose File</label>
+                    <input type="file"
+                          class="form-control"
+                          [(ngModel)]="addProductForm.fileImg"
+                          (change)="fileChangeEvent($event)"
+                           >
+                  </div>
+                  <div class="col-md-12">
+                    <label>Ngày nhập</label>
+                    <input
+                      class="form-control"
+                      type="datetime-local"
+                      placeholder="Ngày tạo"
+                      [(ngModel)]="addProductForm.createdDate"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Ngày update</label>
+                    <input
+                      class="form-control"
+                      type="datetime-local"
+                      placeholder="Ngày update"
+                      [(ngModel)]="addProductForm.updatedDate"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label>Hãng sản xuất</label>
+                    <select
+                      style="
+                        width: 210px;
+                        height: 38px;
+                        margin-bottom: 15px;
+                        margin-left: 20px;
+                      "
+                      [(ngModel)]="selectBrand"
+                      name="brand"
+                    >
+                      <option *ngFor="let item of brands" [value]="item.id">
+                        {{ item.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-12">
+                    <label>Thể loại</label>
+                    <select
+                      style="
+                        width: 210px;
+                        height: 38px;
+                        margin-bottom: 15px;
+                        margin-left: 20px;
+                      "
+                      [(ngModel)]="selectCategory"
+                      name="category"
+                    >
+                      <option *ngFor="let item of categorys" [value]="item.id">
+                        {{ item.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <button
+                      class="btn btn-primary"
+                      style="width: 140px; height: 40px"
+                      (click)="addproducts()"
+                    >
+                      Add Products
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
